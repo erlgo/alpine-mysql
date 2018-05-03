@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 if [ -d /app/mysql ]; then
   echo "[i] MySQL directory already present, skipping creation"
