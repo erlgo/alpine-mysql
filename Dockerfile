@@ -1,5 +1,5 @@
-FROM alpine:latest
-MAINTAINER WangXian <xian366@126.com>
+FROM armhf/alpine:latest
+MAINTAINER erlgo <erlgo@ipc6.com>
 
 WORKDIR /app
 VOLUME /app

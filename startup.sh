@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 if [ -d /app/mysql ]; then
   echo "[i] MySQL directory already present, skipping creation"
@@ -10,7 +10,7 @@ else
   fi
 
 
-  apk add --update mysql mysql-client && rm -f /var/cache/apk/*
+  apk add --no-cache mysql mysql-client
   ln -sf /my.cnf /etc/mysql/my.cnf
 
 
