@@ -4,9 +4,8 @@ MAINTAINER WangXian <xian366@126.com>
 WORKDIR /app
 VOLUME /app
 COPY startup.sh /startup.sh
+COPY my.cnf /my.cnf
 
-RUN apk add --update mysql mysql-client && rm -f /var/cache/apk/*
-COPY my.cnf /etc/mysql/my.cnf
 
 EXPOSE 3306
 CMD ["/startup.sh"]

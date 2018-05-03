@@ -3,7 +3,14 @@
 if [ -d /app/mysql ]; then
   echo "[i] MySQL directory already present, skipping creation"
 else
+  echo "[i] Install MySQL ..."
+
+  apk add --update mysql mysql-client && rm -f /var/cache/apk/*
+  ln -sf /my.cnf /etc/mysql/my.cnf
+
+
   echo "[i] MySQL data directory not found, creating initial DBs"
+
 
   mysql_install_db --user=root > /dev/null
 
