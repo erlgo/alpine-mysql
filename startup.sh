@@ -4,6 +4,11 @@ if [ -d /app/mysql ]; then
   echo "[i] MySQL directory already present, skipping creation"
 else
   echo "[i] Install MySQL ..."
+  if [ "$MYSQL_ROOT_PASSWORD" = "" ]; then
+    MYSQL_ROOT_PASSWORD=111111
+    echo "[i] MySQL root Password: $MYSQL_ROOT_PASSWORD"
+  fi
+
 
   apk add --update mysql mysql-client && rm -f /var/cache/apk/*
   ln -sf /my.cnf /etc/mysql/my.cnf
@@ -13,11 +18,6 @@ else
 
 
   mysql_install_db --user=root > /dev/null
-
-  if [ "$MYSQL_ROOT_PASSWORD" = "" ]; then
-    MYSQL_ROOT_PASSWORD=111111
-    echo "[i] MySQL root Password: $MYSQL_ROOT_PASSWORD"
-  fi
 
   MYSQL_DATABASE=${MYSQL_DATABASE:-""}
   MYSQL_USER=${MYSQL_USER:-""}
